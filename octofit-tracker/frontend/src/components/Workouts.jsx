@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { fetchCollection } from '../api.js';
 import { DataPage, EmptyState } from './Activities.jsx';
 
-const API_ENDPOINT = '/api/workouts';
+const API_ENDPOINT = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts`
+  : 'http://localhost:8000/api/workouts';
 
 function Workouts() {
   const [workouts, setWorkouts] = useState([]); const [error, setError] = useState('');

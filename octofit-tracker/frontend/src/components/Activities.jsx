@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { fetchCollection } from '../api.js';
 
-const API_ENDPOINT = '/api/activities';
+const API_ENDPOINT = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities`
+  : 'http://localhost:8000/api/activities';
 
 export function DataPage({ title, kicker, error, children }) { return <section className="data-page"><p className="eyebrow">{kicker}</p><h1>{title}</h1>{error ? <p className="error-message">{error}</p> : children}</section>; }
 export function EmptyState({ text }) { return <p className="empty-state">{text}</p>; }

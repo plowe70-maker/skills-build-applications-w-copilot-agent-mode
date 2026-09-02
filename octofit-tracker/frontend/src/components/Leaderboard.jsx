@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { fetchCollection } from '../api.js';
 import { DataPage, EmptyState } from './Activities.jsx';
 
-const API_ENDPOINT = '/api/leaderboard';
+const API_ENDPOINT = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard`
+  : 'http://localhost:8000/api/leaderboard';
 
 function Leaderboard() {
   const [entries, setEntries] = useState([]); const [error, setError] = useState('');
