@@ -1,3 +1,13 @@
+/**
+2
+* Seed script for OctoFit Tracker.
+3
+* Populates octofit_db with test data including users,
+4
+* teams, activities, leaderboard entries, and workouts.
+5
+*/
+
 import mongoose from 'mongoose';
 import { Activity } from '../models/activity.js';
 import { LeaderboardEntry } from '../models/leaderboard.js';
