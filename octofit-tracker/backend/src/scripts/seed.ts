@@ -1,11 +1,7 @@
 /**
 2
-* Seed script for OctoFit Tracker.
+* Seed the octofit_db database with test data.
 3
-* Populates octofit_db with test data including users,
-4
-* teams, activities, leaderboard entries, and workouts.
-5
 */
 
 import mongoose from 'mongoose';
