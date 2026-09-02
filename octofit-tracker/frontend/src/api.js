@@ -4,7 +4,8 @@ const apiBaseUrl = codespaceName
   : 'http://localhost:8000';
 
 export async function fetchCollection(component) {
-  const response = await fetch(`${apiBaseUrl}/api/${component}/`);
+  const endpoint = component.startsWith('/api/') ? component : `/api/${component}/`;
+  const response = await fetch(`${apiBaseUrl}${endpoint}`);
   if (!response.ok) throw new Error(`Unable to load ${component} (${response.status})`);
   const payload = await response.json();
   if (Array.isArray(payload)) return payload;
