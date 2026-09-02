@@ -1,6 +1,5 @@
 import cors from 'cors';
 import express from 'express';
-import { apiBaseUrl, apiPort } from './config/api.js';
 import './config/database.js';
 import { Activity } from './models/activity.js';
 import { LeaderboardEntry } from './models/leaderboard.js';
@@ -9,6 +8,9 @@ import { User } from './models/user.js';
 import { Workout } from './models/workout.js';
 
 const app = express();
+const apiBaseUrl = process.env.CODESPACE_NAME
+  ? `https://${process.env.CODESPACE_NAME}-8000.app.github.dev`
+  : 'http://localhost:8000';
 
 app.use(cors());
 app.use(express.json());
@@ -42,6 +44,6 @@ app.use((error: Error, _request: express.Request, response: express.Response, _n
   response.status(500).json({ error: 'Internal server error' });
 });
 
-app.listen(apiPort, () => {
+app.listen(8000, () => {
   console.log(`OctoFit backend listening at ${apiBaseUrl}`);
 });
